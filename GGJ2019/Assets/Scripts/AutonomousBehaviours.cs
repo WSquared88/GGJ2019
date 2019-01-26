@@ -18,16 +18,23 @@ public class AutonomousBehaviours : MonoBehaviour
         Rb = GetComponent<Rigidbody>();
     }
 
+    private void StripY(ref Vector3 vec)
+    {
+        vec.y = 0;
+    }
+
     public Vector3 Seek(Vector3 target)
     {
         Vector3 desired_velocity = (target - transform.position).normalized * MaxSpeed;
         Vector3 steer = desired_velocity - Rb.velocity;
+        StripY(ref steer);
         return steer;
     }
     public Vector3 Flee(Vector3 target)
     {
         Vector3 desired_velocity = (transform.position - target).normalized * MaxSpeed;
         Vector3 steer = desired_velocity - Rb.velocity;
+        StripY(ref steer);
         return steer;
     }
     public Vector3 Arrive(Vector3 target, float slowingDistance)
@@ -38,6 +45,7 @@ public class AutonomousBehaviours : MonoBehaviour
         float clipped_speed = Mathf.Min(ramped_speed, MaxSpeed);
         Vector3 desired_velocity = (clipped_speed / distance) * target_offset;
         Vector3 steer = desired_velocity - Rb.velocity;
+        StripY(ref steer);
         return steer;
     }
 
@@ -45,7 +53,6 @@ public class AutonomousBehaviours : MonoBehaviour
     {
         Quaternion rotator = Quaternion.Euler(0, Random.Range(-180, Mathf.PerlinNoise(Time.time, 0) * 180), 0);
         Vector3 randOffset = rotator * transform.forward * radius;
-        print(randOffset);
         Vector3 target = transform.forward * distanceAhead + randOffset;
         return Seek(transform.position + target);
     }
@@ -62,6 +69,7 @@ public class AutonomousBehaviours : MonoBehaviour
         if (transform.position.z < min.z || transform.position.z > max.z)
             desired_velocity.z = -Rb.velocity.z;
         Vector3 steer = desired_velocity - Rb.velocity;
+        StripY(ref steer);
         return steer;
     }
 

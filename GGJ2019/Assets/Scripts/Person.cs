@@ -25,8 +25,36 @@ public class Person : MonoBehaviour
     public Collider WanderArea;
 
     // TODO the house should inform the Person about its state, and then these values should be calculated based on that.
-    private float CurrentLikes = 0;
-    private float CurrentDislikes = 1;
+    private int CurrentLikes
+    {
+        get
+        {
+            int likes = 0;
+            foreach (RoomPickup rp in Likes)
+            {
+                if (HouseInventory.GetRoomCount(rp.GetRoomType()) > 0)
+                {
+                    likes++;
+                }
+            }
+            return likes;
+        }
+    }
+    private int CurrentDislikes
+    {
+        get
+        {
+            int dislikes = 0;
+            foreach (RoomPickup rp in Dislikes)
+            {
+                if (HouseInventory.GetRoomCount(rp.GetRoomType()) > 0)
+                {
+                    dislikes++;
+                }
+            }
+            return dislikes;
+        }
+    }
 
     /// <summary>
     /// How much time is left for this Person
@@ -37,6 +65,8 @@ public class Person : MonoBehaviour
     private Rigidbody Rb;
 
     public House HouseObject;
+    private InventorySystem HouseInventory;
+    public float MinHouseDistance = 20;
 
     private Action AIFunction;
     void Start ()
@@ -44,9 +74,8 @@ public class Person : MonoBehaviour
         BuyerTime = MaxTimerValue;
         Rb = GetComponent<Rigidbody>();
         AutoBehav = GetComponent<AutonomousBehaviours>();
-        // For testing
-        TimerDepleted += () => Debug.Log("Timer depleted");
         Debug.Assert(HouseObject, "House must be attached");
+        HouseInventory = HouseObject.GetComponent<InventorySystem>();
         AIFunction = ConstrainedWander;
 	}
 
@@ -56,6 +85,17 @@ public class Person : MonoBehaviour
         transform.forward = Rb.velocity.normalized;
         Rb.AddForce(AutoBehav.Wander(20, 5));
         Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
+        float houseDistanceSqr = (transform.position - HouseObject.transform.position).sqrMagnitude;
+        // Cache likes and dislikes
+        int likes = CurrentLikes;
+        int dislikes = CurrentDislikes;
+        if (houseDistanceSqr < Math.Pow(MinHouseDistance, 2))
+        {
+            if (likes > dislikes)
+                AIFunction = ArriveAtHouse;
+            else if (likes < dislikes)
+                AIFunction = FleeFromhouse;
+        }
     }
 
     void ArriveAtHouse()
@@ -68,6 +108,13 @@ public class Person : MonoBehaviour
     {
         transform.forward = Rb.velocity.normalized;
         Rb.AddForce(AutoBehav.Flee(HouseObject.transform.position));
+        float houseDistanceSqr = (transform.position - HouseObject.transform.position).sqrMagnitude;
+        if (houseDistanceSqr > Math.Pow(MinHouseDistance * 2, 2))
+        {
+            AIFunction = ConstrainedWander;
+        }
+
+
     }
 
     #endregion
