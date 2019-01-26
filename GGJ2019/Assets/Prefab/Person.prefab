@@ -22,8 +22,10 @@ GameObject:
   - component: {fileID: 33393611523198592}
   - component: {fileID: 23396760349586984}
   - component: {fileID: 136092051692633082}
+  - component: {fileID: 54854058738098212}
   - component: {fileID: 114932459661732706}
   - component: {fileID: 114058208643787030}
+  - component: {fileID: 114850015290488042}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750810368601560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.832, y: 0.118, z: -0.39}
+  m_LocalPosition: {x: -1.37, y: 0.216, z: -15.28}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,6 +88,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750810368601560}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54854058738098212
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750810368601560}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114058208643787030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +114,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608126d248a81c841af1ad770daf4e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114850015290488042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1750810368601560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370777212511432458e9e260f730586c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSpeed: 3
 --- !u!114 &114932459661732706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,10 +137,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30426e275fe79d64bbacc5229ea11980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Likes: []
-  Dislikes: []
+  Likes: 0000000001000000
+  Dislikes: 02000000
+  PersonUIImage: {fileID: 0}
   MaxTimerValue: 10
-  TimerDecrementMultiplier: 1
+  PercentModifier: 1
+  WanderArea: {fileID: 0}
+  HouseObject: {fileID: 0}
+  MinHouseDistance: 5
 --- !u!136 &136092051692633082
 CapsuleCollider:
   m_ObjectHideFlags: 1

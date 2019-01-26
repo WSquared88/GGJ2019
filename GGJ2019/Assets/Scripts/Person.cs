@@ -48,7 +48,7 @@ public class Person : MonoBehaviour
     {
         get
         {
-            int dislikes = 1;
+            int dislikes = 0;
             foreach (RoomTypes type in Dislikes)
             {
                 if (HouseInventory.GetRoomCount(type) > 0)
@@ -125,7 +125,7 @@ public class Person : MonoBehaviour
 
     void ProgressTimer()
     {
-        BuyerTime -= Time.deltaTime * CurrentDislikes;
+        BuyerTime -= Time.deltaTime * (1 + PercentModifier * CurrentDislikes);
     }
 	
 	// Update is called once per frame
