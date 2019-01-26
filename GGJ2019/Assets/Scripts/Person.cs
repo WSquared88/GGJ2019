@@ -48,7 +48,7 @@ public class Person : MonoBehaviour
     {
         get
         {
-            int dislikes = 0;
+            int dislikes = 1;
             foreach (RoomTypes type in Dislikes)
             {
                 if (HouseInventory.GetRoomCount(type) > 0)
