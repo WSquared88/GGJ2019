@@ -22,9 +22,10 @@ public class Person : MonoBehaviour
     [Tooltip("Used in sell value calculation. This is multiplied by BuyerTime and default Sell Value to get adjusted sell value")]
     public float PercentModifier = 1;
 
+    [Tooltip("Area where the collider is allowed to wander, represented by a collider")]
     public Collider WanderArea;
 
-    // TODO the house should inform the Person about its state, and then these values should be calculated based on that.
+
     private int CurrentLikes
     {
         get
@@ -66,6 +67,8 @@ public class Person : MonoBehaviour
 
     public House HouseObject;
     private InventorySystem HouseInventory;
+
+    [Tooltip("If house's distance to this person is less than this, the person may seek or flee the house")]
     public float MinHouseDistance = 20;
 
     private Action AIFunction;
@@ -113,8 +116,6 @@ public class Person : MonoBehaviour
         {
             AIFunction = ConstrainedWander;
         }
-
-
     }
 
     #endregion
