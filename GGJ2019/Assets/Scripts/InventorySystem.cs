@@ -10,7 +10,8 @@ public class InventorySystem : MonoBehaviour
     float PickupRadius;
     [SerializeField]
     bool DebugDrawCollision;
-    public event Action<RoomTypes> RoomPickedUp;
+    public event Action<PickupComponent> ItemPickedUp;
+
 
 	// Use this for initialization
 	void Start ()
@@ -25,7 +26,7 @@ public class InventorySystem : MonoBehaviour
         {
             Collider[] hit_collider = Physics.OverlapSphere(gameObject.transform.position, PickupRadius);
 
-            for(int i = 0;i<hit_collider.Length;i++)
+            for (int i = 0; i < hit_collider.Length; i++)
             {
                 PickupComponent hit_pickup = hit_collider[i].gameObject.GetComponent<PickupComponent>();
                 if (hit_pickup != null)
@@ -52,10 +53,9 @@ public class InventorySystem : MonoBehaviour
         item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
 
-        RoomPickup room_item = item as RoomPickup;
-        if (room_item && RoomPickedUp != null)
+        if (ItemPickedUp != null)
         {
-            RoomPickedUp(room_item.GetRoomType()); 
+            ItemPickedUp(item);
         }
     }
 
@@ -74,5 +74,10 @@ public class InventorySystem : MonoBehaviour
         }
 
         return count;
+    }
+
+    public void SubscribeToPickedUpEvent(Action<PickupComponent> subscribing_function)
+    {
+        ItemPickedUp += subscribing_function;
     }
 }
