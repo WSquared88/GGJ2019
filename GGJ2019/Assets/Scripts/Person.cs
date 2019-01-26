@@ -35,6 +35,10 @@ public class Person : MonoBehaviour
 
     private AutonomousBehaviours AutoBehav;
     private Rigidbody Rb;
+
+    public House HouseObject;
+
+    private Action AIFunction;
     void Start ()
     {
         BuyerTime = MaxTimerValue;
@@ -42,24 +46,41 @@ public class Person : MonoBehaviour
         AutoBehav = GetComponent<AutonomousBehaviours>();
         // For testing
         TimerDepleted += () => Debug.Log("Timer depleted");
+        Debug.Assert(HouseObject, "House must be attached");
+        AIFunction = ConstrainedWander;
 	}
+
+    #region AI
+    void ConstrainedWander()
+    {
+        transform.forward = Rb.velocity.normalized;
+        Rb.AddForce(AutoBehav.Wander(20, 5));
+        Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
+    }
+
+    void ArriveAtHouse()
+    {
+        transform.forward = Rb.velocity.normalized;
+        Rb.AddForce(AutoBehav.Arrive(HouseObject.transform.position, 20));
+    }
+
+    void FleeFromhouse()
+    {
+        transform.forward = Rb.velocity.normalized;
+        Rb.AddForce(AutoBehav.Flee(HouseObject.transform.position));
+    }
+
+    #endregion
 
     void ProgressTimer()
     {
         BuyerTime -= Time.deltaTime * CurrentDislikes;
     }
-
-    void Move()
-    {
-        Rb.AddForce(AutoBehav.Wander(20, 5));
-        Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
-        transform.forward = Rb.velocity.normalized;
-    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+        AIFunction();
         if (BuyerTime > 0)
         {
             ProgressTimer();
