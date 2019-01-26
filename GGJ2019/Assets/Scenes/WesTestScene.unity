@@ -178,8 +178,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Time until game over: 60'
 --- !u!114 &136031775
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeUntilGameOverInSeconds: 10
-  TimerCountdownString: 'Time until game over: {0}'
+  TimerCountdownString: Game over in {0:N2} seconds
 --- !u!222 &136031776
 CanvasRenderer:
   m_ObjectHideFlags: 0
