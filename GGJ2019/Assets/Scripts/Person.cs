@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 /// <summary>
 /// Person component which maintains likes, dislikes, and timer status for People.
@@ -12,6 +12,9 @@ public class Person : MonoBehaviour
 {
     public RoomTypes[] Likes;
     public RoomTypes[] Dislikes;
+
+    [SerializeField]
+    Sprite PersonUIImage;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;
@@ -45,7 +48,7 @@ public class Person : MonoBehaviour
     {
         get
         {
-            int dislikes = 0;
+            int dislikes = 1;
             foreach (RoomTypes type in Dislikes)
             {
                 if (HouseInventory.GetRoomCount(type) > 0)
@@ -142,5 +145,15 @@ public class Person : MonoBehaviour
             }
         }
 
+    }
+
+    public Sprite GetPersonUIImage()
+    {
+        return PersonUIImage;
+    }
+
+    public float GetMaxTimerValue()
+    {
+        return MaxTimerValue;
     }
 }
