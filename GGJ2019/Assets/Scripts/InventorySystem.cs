@@ -46,7 +46,8 @@ public class InventorySystem : MonoBehaviour
     public void AddItem(PickupComponent item)
     {
         Debug.Log("We picked up the item! It was really cool!");
-        item.gameObject.SetActive(false);
+        item.GetComponent<Renderer>().enabled = false;
+        item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
     }
 }
