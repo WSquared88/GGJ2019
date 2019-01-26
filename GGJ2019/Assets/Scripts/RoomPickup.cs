@@ -2,9 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoomTypes
+{
+    Bathroom,
+    Bedroom,
+    Kitchen,
+    Office,
+    Floor,
+
+    RoomTypesCount
+}
+
 /// <summary>
 /// Extension of the PickupComponent which represents any pickup-able component that is part of a room.
 /// </summary>
-public class RoomPickup : PickupComponent {
+public class RoomPickup : PickupComponent
+{
+    [SerializeField]
+    RoomTypes RoomType;
 
+    public RoomTypes GetRoomType()
+    {
+        return RoomType;
+    }
 }

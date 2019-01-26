@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float simpleTimer = .5f;
     [SerializeField]
-    Camera camera;
+    Camera PlayerCam;
 
     private bool ComplexGoal;
     private bool Rotating;
@@ -51,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Assert(PlayerSpeed > 0.0f + float.Epsilon, "The player speed is less than zero! This is going to cause weird problems!");
         // If no camera, default to main camera
-        if (!camera)
+        if (!PlayerCam)
         {
-            camera = Camera.main;
+            PlayerCam = Camera.main;
         }
         CurrMove = new Vector3(0, 0, 0);
         CurrentGoal = new Vector3(0, 0, 0);
@@ -79,8 +79,8 @@ public class PlayerMovement : MonoBehaviour
         PerspGoalLR = new Vector3(0, 0, 0);
         Vector3 move_direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
-        Vector3 camFor = camera.transform.forward;
-        Vector3 camRight = camera.transform.right;
+        Vector3 camFor = PlayerCam.transform.forward;
+        Vector3 camRight = PlayerCam.transform.right;
 
 
         //W - Positive Horizontal -> Cam.forward
@@ -137,7 +137,8 @@ public class PlayerMovement : MonoBehaviour
                 acceleration = minAccel;
             }
         }
-        move_direction = camera.transform.TransformDirection(move_direction);
+
+        move_direction = PlayerCam.transform.TransformDirection(move_direction);
         move_direction.y = 0;
         Rigidbody rigid_body = GetComponent<Rigidbody>();
         Debug.Assert(rigid_body != null, "The Rigidbody is missing from the player!");

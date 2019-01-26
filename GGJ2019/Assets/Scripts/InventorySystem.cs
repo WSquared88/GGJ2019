@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class InventorySystem : MonoBehaviour
     float PickupRadius;
     [SerializeField]
     bool DebugDrawCollision;
+    public event Action<RoomTypes> RoomPickedUp;
 
 	// Use this for initialization
 	void Start ()
@@ -46,7 +48,31 @@ public class InventorySystem : MonoBehaviour
     public void AddItem(PickupComponent item)
     {
         Debug.Log("We picked up the item! It was really cool!");
-        item.gameObject.SetActive(false);
+        item.GetComponent<Renderer>().enabled = false;
+        item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
+
+        RoomPickup room_item = item as RoomPickup;
+        if (room_item && RoomPickedUp != null)
+        {
+            RoomPickedUp(room_item.GetRoomType()); 
+        }
+    }
+
+    public int GetRoomCount(RoomTypes room_type)
+    {
+        int count = 0;
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            RoomPickup room_pickup_component = Items[i] as RoomPickup;
+
+            if (room_pickup_component != null && room_pickup_component.GetRoomType() == room_type)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
