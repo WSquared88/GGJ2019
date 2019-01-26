@@ -90,7 +90,8 @@ public class Person : MonoBehaviour
     {
         transform.forward = Rb.velocity.normalized;
         Rb.AddForce(AutoBehav.Wander(20, 5));
-        Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
+        if (WanderArea)
+            Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
         float houseDistanceSqr = (transform.position - HouseObject.transform.position).sqrMagnitude;
         // Cache likes and dislikes
         int likes = CurrentLikes;
