@@ -18,14 +18,22 @@ public class Person : MonoBehaviour
     [Tooltip("The maximum value of the timer that this person will use.")]
     public float MaxTimerValue = 10;
 
-    [Tooltip("Value that will be multiplied by DeltaTime and subtracted from the timer each frame.")]
-    public float TimerDecrementMultiplier = 1; 
+    [Tooltip("Used in sell value calculation. This is multiplied by BuyerTime and default Sell Value to get adjusted sell value")]
+    public float PercentModifier = 1;
 
-    private float Timer;
+
+    // TODO the house should inform the Person about its state, and then these values should be calculated based on that.
+    private float CurrentLikes = 0;
+    private float CurrentDislikes = 1;
+
+    /// <summary>
+    /// How much time is left for this Person
+    /// </summary>
+    public float BuyerTime { get; private set; }
 
     void Start ()
     {
-        Timer = MaxTimerValue;
+        BuyerTime = MaxTimerValue;
 
         // For testing
         TimerDepleted += () => Debug.Log("Timer depleted");
@@ -33,13 +41,13 @@ public class Person : MonoBehaviour
 
     void ProgressTimer()
     {
-        Timer -= Time.deltaTime * TimerDecrementMultiplier;
+        BuyerTime -= Time.deltaTime * CurrentDislikes;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Timer > 0)
+        if (BuyerTime > 0)
         {
             ProgressTimer();
         }
