@@ -7,18 +7,17 @@ using UnityEngine;
 /// </summary>
 public class House : MonoBehaviour
 {
-    public Floor[] FloorPrefabs;
+    public GameObject[] FloorPrefabs;
 
 	// Use this for initialization
 	void Start ()
     {
-        for (int i = 0; i < 10; ++i)
-           AddFloor();
+        AddFloor();
 	}
 
     void AddFloor()
     {
-        Floor new_floor = Instantiate<Floor>(FloorPrefabs[Random.Range(0, FloorPrefabs.Length)]);
+        GameObject new_floor = Instantiate<GameObject>(FloorPrefabs[Random.Range(0, FloorPrefabs.Length)]);
         new_floor.transform.parent = this.transform;
         if (transform.childCount == 1)
         {
@@ -37,15 +36,13 @@ public class House : MonoBehaviour
         }
     }
 
-    Floor GetFloor(int index)
-    {
-        Debug.Assert(index >= 0 && index < transform.childCount, "Invalid floor index");
-        return transform.GetChild(index).GetComponent<Floor>();
-    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+		if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            AddFloor();
+        }
 	}
 }
