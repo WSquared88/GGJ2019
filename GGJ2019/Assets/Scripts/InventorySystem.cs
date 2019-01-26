@@ -10,7 +10,7 @@ public class InventorySystem : MonoBehaviour
     float PickupRadius;
     [SerializeField]
     bool DebugDrawCollision;
-    public event Action<int> RoomPickedUp;
+    public event Action<RoomTypes> RoomPickedUp;
 
 	// Use this for initialization
 	void Start ()
@@ -51,9 +51,11 @@ public class InventorySystem : MonoBehaviour
         item.GetComponent<Renderer>().enabled = false;
         item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
-        if (item is RoomPickup && RoomPickedUp != null)
+
+        RoomPickup room_item = item as RoomPickup;
+        if (room_item && RoomPickedUp != null)
         {
-            RoomPickedUp(-1); // TODO replace with enum
+            RoomPickedUp(room_item.GetRoomType()); 
         }
     }
 
