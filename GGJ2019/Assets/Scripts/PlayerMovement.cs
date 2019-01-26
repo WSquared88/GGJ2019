@@ -28,9 +28,7 @@ public class PlayerMovement : MonoBehaviour
         move_direction = camera.transform.TransformDirection(move_direction);
         move_direction.y = 0;
         Rigidbody rigid_body = GetComponent<Rigidbody>();
-        if (rigid_body)
-        {
-            rigid_body.MovePosition(transform.position +  move_direction * Time.deltaTime * PlayerSpeed);
-        }
+        Debug.Assert(rigid_body != null, "The Rigidbody is missing from the player!");
+        rigid_body.MovePosition(transform.position + move_direction * Time.deltaTime * PlayerSpeed);
 	}
 }
