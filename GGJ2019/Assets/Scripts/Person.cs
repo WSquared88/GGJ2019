@@ -9,14 +9,8 @@ using UnityEngine;
 /// </summary>
 public class Person : MonoBehaviour
 {
-    // Temporary class until pickup class is created
-    public class RoomPickup
-    {
-
-    }
-
-    public List<RoomPickup> Likes { get; private set; }
-    public List<RoomPickup> Dislikes { get; private set; }
+    public RoomPickup[] Likes;
+    public RoomPickup[] Dislikes;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;
