@@ -154,19 +154,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114932459661732706, guid: c177eee0244ef4046879070328e8b4f0,
         type: 2}
-      propertyPath: HouseObject
-      value: 
-      objectReference: {fileID: 1205268885}
-    - target: {fileID: 114932459661732706, guid: c177eee0244ef4046879070328e8b4f0,
-        type: 2}
       propertyPath: WanderArea
       value: 
       objectReference: {fileID: 1791107732}
-    - target: {fileID: 114850015290488042, guid: c177eee0244ef4046879070328e8b4f0,
+    - target: {fileID: 114932459661732706, guid: c177eee0244ef4046879070328e8b4f0,
         type: 2}
-      propertyPath: MaxSpeed
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: HouseObject
+      value: 
+      objectReference: {fileID: 1205268885}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c177eee0244ef4046879070328e8b4f0, type: 2}
   m_IsPrefabAsset: 0
