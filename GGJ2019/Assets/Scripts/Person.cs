@@ -9,13 +9,6 @@ using UnityEngine;
 /// </summary>
 public class Person : MonoBehaviour
 {
-    // Temporary class until pickup class is created
-    [Serializable]
-    public class RoomPickup
-    {
-        public string Name;
-    }
-
     public RoomPickup[] Likes;
     public RoomPickup[] Dislikes;
 
