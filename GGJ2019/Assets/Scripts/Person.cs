@@ -10,13 +10,14 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     // Temporary class until pickup class is created
+    [Serializable]
     public class RoomPickup
     {
-
+        public string Name;
     }
 
-    public List<RoomPickup> Likes { get; private set; }
-    public List<RoomPickup> Dislikes { get; private set; }
+    public RoomPickup[] Likes;
+    public RoomPickup[] Dislikes;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;
