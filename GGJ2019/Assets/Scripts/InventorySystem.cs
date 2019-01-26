@@ -50,4 +50,21 @@ public class InventorySystem : MonoBehaviour
         item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
     }
+
+    public int GetRoomCount(RoomTypes room_type)
+    {
+        int count = 0;
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            RoomPickup room_pickup_component = Items[i] as RoomPickup;
+
+            if (room_pickup_component != null && room_pickup_component.GetRoomType() == room_type)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
