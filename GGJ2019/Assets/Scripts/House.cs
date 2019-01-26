@@ -21,7 +21,7 @@ public class House : MonoBehaviour
         new_floor.transform.parent = this.transform;
         if (transform.childCount == 1)
         {
-            new_floor.transform.position = Vector3.zero;
+            new_floor.transform.localPosition = Vector3.zero;
         }
         else
         {
