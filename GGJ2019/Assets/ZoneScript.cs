@@ -17,6 +17,9 @@ public class ZoneScript : MonoBehaviour {
         {
             Debug.Log("Sale Made");
             makeSale = true;
+            
+            
+            //call ScoreManager.SellHouse()
             //fire sale method in house
         }
         else
