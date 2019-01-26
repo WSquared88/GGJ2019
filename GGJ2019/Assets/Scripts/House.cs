@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// House Management Component
 /// </summary>
 public class House : MonoBehaviour
 {
     public Floor[] FloorPrefabs;
-
 
 	// Use this for initialization
 	void Start ()
