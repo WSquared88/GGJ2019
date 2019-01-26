@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class InventorySystem : MonoBehaviour
     float PickupRadius;
     [SerializeField]
     bool DebugDrawCollision;
+    public event Action<int> RoomPickedUp;
 
 	// Use this for initialization
 	void Start ()
@@ -49,5 +51,9 @@ public class InventorySystem : MonoBehaviour
         item.GetComponent<Renderer>().enabled = false;
         item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
+        if (item is RoomPickup && RoomPickedUp != null)
+        {
+            RoomPickedUp(-1); // TODO replace with enum
+        }
     }
 }
