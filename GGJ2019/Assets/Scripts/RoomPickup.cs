@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum RoomTypes
+public enum RoomTypes
 {
     Bathroom,
     Bedroom,
@@ -20,4 +20,9 @@ public class RoomPickup : PickupComponent
 {
     [SerializeField]
     RoomTypes RoomType;
+
+    public RoomTypes GetRoomType()
+    {
+        return RoomType;
+    }
 }
