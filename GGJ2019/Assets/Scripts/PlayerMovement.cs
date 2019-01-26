@@ -20,9 +20,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move_direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         Rigidbody rigid_body = GetComponent<Rigidbody>();
 
-        if (rigid_body)
-        {
-            rigid_body.MovePosition(transform.position + move_direction * Time.deltaTime * PlayerSpeed);
-        }
+        Debug.Assert(rigid_body != null, "The Rigidbody is missing from the player!");
+        rigid_body.MovePosition(transform.position + move_direction * Time.deltaTime * PlayerSpeed);
 	}
 }
