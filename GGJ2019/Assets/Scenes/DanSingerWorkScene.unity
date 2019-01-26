@@ -159,12 +159,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2facf1fde5b890041989a499592066b0, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &465905404 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114776237091660982, guid: 2facf1fde5b890041989a499592066b0,
-    type: 2}
-  m_PrefabInternal: {fileID: 465905403}
-  m_Script: {fileID: 11500000, guid: b5b1779e78a6bda458650f5c688f6f11, type: 3}
 --- !u!1 &605971552
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,11 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30426e275fe79d64bbacc5229ea11980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Likes:
-  - {fileID: 465905404}
-  - {fileID: 1604274633}
-  Dislikes:
-  - {fileID: 1198884664}
+  Likes: 0000000001000000
+  Dislikes: 02000000
   MaxTimerValue: 10
   PercentModifier: 1
   WanderArea: {fileID: 1791107732}
@@ -459,12 +450,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2facf1fde5b890041989a499592066b0, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1198884664 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114776237091660982, guid: 2facf1fde5b890041989a499592066b0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1198884663}
-  m_Script: {fileID: 11500000, guid: b5b1779e78a6bda458650f5c688f6f11, type: 3}
 --- !u!1 &1205268878
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fda5e659ddb39e47b7848e544ca5b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupRadius: 1
+  PickupRadius: 2
   DebugDrawCollision: 0
 --- !u!33 &1205268881
 MeshFilter:
@@ -689,12 +674,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2facf1fde5b890041989a499592066b0, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1604274633 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114776237091660982, guid: 2facf1fde5b890041989a499592066b0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1604274632}
-  m_Script: {fileID: 11500000, guid: b5b1779e78a6bda458650f5c688f6f11, type: 3}
 --- !u!1 &1791107731
 GameObject:
   m_ObjectHideFlags: 0

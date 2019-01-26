@@ -10,8 +10,8 @@ using UnityEngine;
 [RequireComponent(typeof(AutonomousBehaviours))]
 public class Person : MonoBehaviour
 {
-    public RoomPickup[] Likes;
-    public RoomPickup[] Dislikes;
+    public RoomTypes[] Likes;
+    public RoomTypes[] Dislikes;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;
@@ -30,9 +30,9 @@ public class Person : MonoBehaviour
         get
         {
             int likes = 0;
-            foreach (RoomPickup rp in Likes)
+            foreach (RoomTypes type in Likes)
             {
-                if (HouseInventory.GetRoomCount(rp.GetRoomType()) > 0)
+                if (HouseInventory.GetRoomCount(type) > 0)
                 {
                     likes++;
                 }
@@ -45,9 +45,9 @@ public class Person : MonoBehaviour
         get
         {
             int dislikes = 0;
-            foreach (RoomPickup rp in Dislikes)
+            foreach (RoomTypes type in Dislikes)
             {
-                if (HouseInventory.GetRoomCount(rp.GetRoomType()) > 0)
+                if (HouseInventory.GetRoomCount(type) > 0)
                 {
                     dislikes++;
                 }
