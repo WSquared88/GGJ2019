@@ -19,4 +19,12 @@ public class UIFunctions : MonoBehaviour {
         Application.Quit();
 #endif
     }
+    public void PlayTransition(Animator anim)
+    {
+        anim.SetTrigger("PlayTransition");
+    }
+    public void PlayTransitionReverse(Animator anim)
+    {
+        anim.SetTrigger("PlayTransitionReverse");
+    }
 }
