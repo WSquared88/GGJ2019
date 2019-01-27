@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OneShotFlyIntoCamera : MonoBehaviour
 {
 
     public float Duration = 4;
     public Camera TargetCamera;
-    public event Action TransitionComplete;
+    public UnityEvent TransitionComplete;
     private float StartTime;
     private bool IsFlying = false;
     private Vector3 StartPos;
@@ -60,7 +61,7 @@ public class OneShotFlyIntoCamera : MonoBehaviour
                 IsFlying = false;
                 if (TransitionComplete != null)
                 {
-                    TransitionComplete();
+                    TransitionComplete.Invoke();
                 }
                 this.GetComponent<Camera>().enabled = false;
             }
