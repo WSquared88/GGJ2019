@@ -112,5 +112,6 @@ public class UIRoomCounter : MonoBehaviour
         Floors.Clear();
         Rooms.Clear();
         PlayerInventory = new_player.GetComponent<InventorySystem>();
+        PlayerInventory.SubscribeToPickedUpEvent(PickedUpEventHandler);
     }
 }

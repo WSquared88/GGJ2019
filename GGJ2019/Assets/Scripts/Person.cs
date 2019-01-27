@@ -102,10 +102,11 @@ public class Person : MonoBehaviour
             Rb.AddForce(AutoBehav.Constrain(WanderArea.bounds) * 5);
         float houseDistanceSqr = (transform.position - HouseObject.transform.position).sqrMagnitude;
         // Cache likes and dislikes
-        int likes = CurrentLikes;
-        int dislikes = CurrentDislikes;
         if (houseDistanceSqr < Math.Pow(MinHouseDistance, 2))
         {
+            int likes = CurrentLikes;
+            int dislikes = CurrentDislikes;
+
             if (likes > dislikes)
                 AIFunction = ArriveAtHouse;
             else if (likes < dislikes)

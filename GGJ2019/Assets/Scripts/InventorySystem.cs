@@ -146,13 +146,16 @@ public class InventorySystem : MonoBehaviour
     {
         int count = 0;
 
-        for (int i = 0; i < Items.Count; i++)
+        if (Items != null)
         {
-            RoomPickup room_pickup_component = Items[i] as RoomPickup;
-
-            if (room_pickup_component != null && room_pickup_component.GetRoomType() == room_type)
+            for (int i = 0; i < Items.Count; i++)
             {
-                count++;
+                RoomPickup room_pickup_component = Items[i] as RoomPickup;
+
+                if (room_pickup_component != null && room_pickup_component.GetRoomType() == room_type)
+                {
+                    count++;
+                }
             }
         }
 

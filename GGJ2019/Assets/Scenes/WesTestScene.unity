@@ -474,7 +474,7 @@ MonoBehaviour:
   MaxNumSpawnedRooms: 1
   PlayerInventory: {fileID: 1774385085}
   GameBoundary: {fileID: 723954645}
-  PlayerTemplate: {fileID: 1742674012769980, guid: ea8a0f626d1e67a4e835da2c09e1d22a,
+  PlayerTemplate: {fileID: 1525332623215534, guid: de96d0a7ec762ca4ea886daa9d2a0683,
     type: 2}
 --- !u!4 &283639744
 Transform:
@@ -1160,6 +1160,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &927917309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927917311}
+  - component: {fileID: 927917310}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &927917310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927917309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47248da732a81d46ab019d7625650b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialSellValue: 1000
+  Inventory: {fileID: 1774385085}
+--- !u!4 &927917311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927917309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5465842, y: -1.89761, z: 2.0055113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1009553216
 GameObject:
