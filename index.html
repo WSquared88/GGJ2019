@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styleSheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
+    <title>FAKE ESTATE</title>
+</head>
+<body>
+
+    <div id="titleScreen">
+    <img src="media/startScreenMockup.png" alt="titleScreen">
+    </div>
+
+    <div id="nav">
+        <ul>
+            <li><a href="#titleScreen">Home</a></li>
+            <li><a href="#pitch">Pitch</a></li>
+            <li><a href="#build">Build</a></li>
+            <li><a href="#about">Team</a></li>
+            <li><a href="#ggj">GGJ</a></li>
+
+
+        </ul>
+    </div>
+
+    <div id="grid">
+        
+        <div id="pitch">
+            <h1>What Does HOME Mean To You?</h1>
+            <p id="pitchLine">
+                <b>Turn the real estate market on its head as the house hunter becomes the house hunted.</b>
+            </p>
+            <p>
+                Play as a giant sentient house and gather room attachments to attract potential buyers. Keep your potential buyers enticed with new upgrades and features before planting your 
+                foundation and trapping everyone in a shoddily built and overpriced pile of bricks.
+            </p>
+        </div>
+
+        <div id="image1" class="feature">
+            <img src="media/houseWiggle.gif" alt="3D House Asset">
+            <p>
+                Build yourself up. Knock yourself down. Run around and hurt people (financially).
+            </p>
+        </div>
+
+        <div id="image2" class="feature">
+            <img src="media/furnitureGif.gif" alt="Furniture Appearing">
+            <p>
+                Gather more things to increase how much people like you. This model is accurate to real life.
+            </p>
+        </div>
+
+        <div id="image3" class="feature">
+            <img src="media/gameplayGif.gif" alt="Gameplay">
+            <p>
+               Get those phat stacks. If you take a tumble, you'll lose progress on becoming the ultimate McMansion.
+            </p>
+        </div>
+
+        <div id="image4" class="feature">
+            <img src="" alt="People">
+            <p>
+
+            </p>
+        </div>
+
+        <div id="build">
+        <h2>Get the Game</h2>
+            <a href="https://github.com/WSquared88/GGJ2019"><button>BUILD</button></a>
+        </div>
+
+        <div id="assets">
+        <h2>Get the Assets</h2>
+            <a href="https://drive.google.com/drive/folders/1YmtCMmTWbYpVke5GdMeKGsyW__LACFXl?usp=sharing"><button>ASSETS</button></a>
+        </div>
+
+        <div id="about">
+        <h1> Meet the Makers</h1>
+            <div id="people">
+                <div>
+                    <img src="media/people/Rob.png" alt="Rob">
+                    <h2>Rob Bailey</h2>
+                    <p>
+                        Gameplay Programmer, <br>Level Designer
+                    </p>
+                </div>
+                <div>
+                    <img src="media/people/Wes.png" alt="Wes">
+                    <h2>Wes Waligora</h2>
+                    <p>
+                        Gameplay Programmer, <br>UI Implementation
+                    </p>
+                </div>
+                <div>
+                    <img src="media/people/Dan.png" alt="Dan">
+                    <h2>Dan Singer</h2>
+                    <p>
+                        Gameplay Programmer, <br>AI Interactions
+                    </p>
+                </div>
+                <div>
+                    <img src="media/people/Emily.png" alt="Emily">
+                    <h2>Emily Turner</h2>
+                    <p>
+                        2D Artist, <br>UI Designer
+                    </p>
+                </div>
+                <div>
+                    <img src="media/people/Edward.png" alt="Edward">
+                    <h2>Edward Ro</h2>
+                    <p>    
+                        3D Artist, <br>Rigging + Animation
+                    </p>
+                </div>
+            </div>        
+            
+            
+        </div>
+
+        <div id="ggj">
+            <h1>Made for GGJ19</h1>
+            <img src="media/GlobalGameJamLogo.jpg" alt="GGJ Logo">
+            <p>
+                If you want to participate in the next Global Game Jam, go to the <a href="https://globalgamejam.org">Jam Site</a> and sign up!
+            </p>
+        </div>
+
+
+    </div>
+
+    
+
+
+    <!--TAKEN FROM W3SCHOOLS, NOT MY OWN CODE: https://www.w3schools.com/howto/howto_js_navbar_sticky.asp-->
+    <script>
+        // When the user scrolls the page, execute myFunction 
+        window.onscroll = function() {myFunction()};
+
+        // Get the navbar
+        var navbar = document.getElementById("nav");
+
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
+
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+}
+
+    </script>
+
+</body>
+</html>
