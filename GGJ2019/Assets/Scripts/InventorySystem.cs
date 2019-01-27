@@ -92,6 +92,11 @@ public class InventorySystem : MonoBehaviour
         //If we're just a person
         else
         {
+            Person person = item.GetComponent<Person>();
+            if (person)
+            {
+                person.StartTimer();
+            }
             AddItem(item);
         }
     }
