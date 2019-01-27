@@ -41,6 +41,8 @@ MonoBehaviour:
   PlayerInventory: {fileID: 0}
   PersonTimerTemplate: {fileID: 1448716808688226, guid: bdbde50c5b5a32742a955cbe6c3067b2,
     type: 2}
+  ImageOffset: {x: 0, y: 50}
+  ImageSize: {x: 50, y: 50}
 --- !u!224 &224681622149411352
 RectTransform:
   m_ObjectHideFlags: 1
