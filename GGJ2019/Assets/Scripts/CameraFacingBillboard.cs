@@ -6,6 +6,14 @@ public class CameraFacingBillboard : MonoBehaviour
 {
     public Camera CameraToLookAt;
 
+    void Start()
+    {
+        if (CameraToLookAt == null)
+        {
+            CameraToLookAt = Camera.main;
+        }
+    }
+
     /// <summary>
     /// Courtesy of http://wiki.unity3d.com/index.php/CameraFacingBillboard
     /// </summary>
