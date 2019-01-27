@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class OneShotFlyIntoCamera : MonoBehaviour
 
     public float Duration = 4;
     public Camera TargetCamera;
+    public event Action TransitionComplete;
     private float StartTime;
     private bool IsFlying = false;
     private Vector3 StartPos;
@@ -15,7 +17,7 @@ public class OneShotFlyIntoCamera : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        Debug.Assert(TargetCamera, "Target Camera must be assigned");		
+        Debug.Assert(TargetCamera, "Target Camera must be assigned");
 	}
 
     public void Fly()
@@ -56,6 +58,10 @@ public class OneShotFlyIntoCamera : MonoBehaviour
             {
                 TargetCamera.enabled = true;
                 IsFlying = false;
+                if (TransitionComplete != null)
+                {
+                    TransitionComplete();
+                }
                 this.GetComponent<Camera>().enabled = false;
             }
         }
