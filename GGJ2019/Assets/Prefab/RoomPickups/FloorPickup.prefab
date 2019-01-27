@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 136471317156368862}
   - component: {fileID: 114425551991162100}
   - component: {fileID: 212640058521567444}
-  - component: {fileID: 114954500467870686}
+  - component: {fileID: 114408385383920958}
   m_Layer: 0
   m_Name: FloorPickup
   m_TagString: Untagged
@@ -37,12 +37,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967514969598980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.588, y: -13.292801, z: 94.964}
+  m_LocalPosition: {x: 49.995247, y: -12.943867, z: 95}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114408385383920958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967514969598980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfc5195b2a06ea409f16a70a49aa47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraToLookAt: {fileID: 0}
 --- !u!114 &114425551991162100
 MonoBehaviour:
   m_ObjectHideFlags: 1
