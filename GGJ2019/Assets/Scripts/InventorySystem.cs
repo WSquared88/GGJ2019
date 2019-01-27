@@ -103,6 +103,7 @@ public class InventorySystem : MonoBehaviour
             if (person)
             {
                 person.StartTimer();
+                person.PersonSpriteRenderer.enabled = false;
             }
             AddItem(item);
         }
@@ -111,7 +112,12 @@ public class InventorySystem : MonoBehaviour
     void AddItem(PickupComponent item)
     {
         Debug.Log("We picked up the item! It was really cool!");
-        item.GetComponent<Renderer>().enabled = false;
+        // items may not have renderers at root level
+        Renderer rend = item.GetComponent<Renderer>();
+        if (rend)
+        {
+            rend.enabled = false;
+        }
         item.GetComponent<Collider>().enabled = false;
         Items.Add(item);
 
