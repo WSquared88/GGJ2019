@@ -21,14 +21,19 @@ public class UIRoomCounter : MonoBehaviour
     List<Image> Floors;
     List<Image> Rooms;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        PlayerInventory.SubscribeToPickedUpEvent(PickedUpEventHandler);
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         Debug.Assert(PlayerInventory, "The player inventory field on the UIRoomCounter wasn't set!");
         Debug.Assert(FloorHeight > 0.0f + float.Epsilon, "The floor height wasn't set! The floors will stack on top of each other!");
         Debug.Assert(FloorWidth > 0.0f + float.Epsilon, "The floor width wasn't set! The rooms will be stacked on top of each other!");
-        PlayerInventory.SubscribeToPickedUpEvent(PickedUpEventHandler);
-        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
+        
         Floors = new List<Image>();
         Rooms = new List<Image>();
     }

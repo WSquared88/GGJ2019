@@ -24,6 +24,8 @@ public class House : MonoBehaviour
                 AddFloor();
             }
         });
+
+        SpawnManager.PlayerRespawned += PlayerRespondedHandler;
 	}
 
     void AddFloor()
@@ -98,4 +100,9 @@ public class House : MonoBehaviour
             AddFloor();
         }
 	}
+
+    void PlayerRespondedHandler(GameObject new_player)
+    {
+        PlayerCam = Camera.main;
+    }
 }

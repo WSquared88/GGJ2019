@@ -16,16 +16,20 @@ public class UIPersonTracker : MonoBehaviour
     [SerializeField]
     Vector2 ImageSize;
 
-	// Use this for initialization
-	void Start ()
+    void Awake()
+    {
+        PlayerInventory.SubscribeToPickedUpEvent(SpawnNewPersonUI);
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
+        Person.TimerDepleted += PersonLeftHandler;
+    }
+
+    // Use this for initialization
+    void Start ()
     {
         PersonTimerManagers = new List<PersonTimerManager>();
         CurrentPeopleComponents = new List<Person>();
         Debug.Assert(PlayerInventory != null, "The player inventory wasn't set on the UIPersonTracker component of the UI!");
         Debug.Assert(PersonTimerTemplate, "The slider for the person timer wasn't set on the UIPersonTracker component of the UI!");
-        PlayerInventory.SubscribeToPickedUpEvent(SpawnNewPersonUI);
-        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
-        Person.TimerDepleted += PersonLeftHandler;
 	}
 	
 	// Update is called once per frame

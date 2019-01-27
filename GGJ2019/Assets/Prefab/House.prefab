@@ -1889,8 +1889,9 @@ MonoBehaviour:
   PickupRadius: 2
   MaxNumRoomsPerFloor: 3
   AutoActivatedPickupComponents:
-  - {fileID: 1946141668196252, guid: 2facf1fde5b890041989a499592066b0, type: 2}
+  - {fileID: 1967514969598980, guid: c36e2bde5a161c34ba23b9a98bb1bd9f, type: 2}
   DebugDrawCollision: 0
+  Target: {fileID: 0}
 --- !u!114 &114335855703501090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1925,7 +1926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorPrefabs:
   - {fileID: 1719155953266872, guid: 51305ff2babaaff4b995f49503a2f16f, type: 2}
-  conductor: {fileID: 95348086286183272}
+  BasePrefab: {fileID: 0}
+  PlayerCam: {fileID: 0}
 --- !u!137 &137227846534854844
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

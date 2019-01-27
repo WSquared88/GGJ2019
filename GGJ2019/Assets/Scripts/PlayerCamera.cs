@@ -10,6 +10,7 @@ public class PlayerCamera : MonoBehaviour {
     public Transform Target;
     public float Smooth = 2f;
     public bool FollowTarget = true;
+    public Vector3 localOffset;
 
     private Vector3 TargetToCam;
 
@@ -18,16 +19,17 @@ public class PlayerCamera : MonoBehaviour {
     {
         if (Target != null)
         {
-            TargetToCam = (transform.position - Target.position);
+            //TargetToCam = (transform.position - Target.position);
 
         }
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
+
     }
 
     public void SetTarget(Transform target)
     {
         Target = target;
         TargetToCam = (transform.position - Target.position);
-        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
     }
 
     // Update is called once per frame
@@ -35,7 +37,8 @@ public class PlayerCamera : MonoBehaviour {
     {
 		if (FollowTarget)
         {
-            transform.position = Vector3.Lerp(transform.position, Target.transform.position + TargetToCam, Smooth * Time.fixedDeltaTime);
+            Vector3 offset = transform.TransformDirection(localOffset);
+            transform.position = Vector3.Lerp(transform.position, Target.transform.position + offset, Smooth * Time.fixedDeltaTime);
         }
 	}
 
