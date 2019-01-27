@@ -13,8 +13,7 @@ public class Person : MonoBehaviour
     public RoomTypes[] Likes;
     public RoomTypes[] Dislikes;
 
-    [SerializeField]
-    SpriteRenderer PersonSpriteRenderer;
+    public SpriteRenderer PersonSpriteRenderer;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;

@@ -23,7 +23,7 @@ public class RoomPickup : PickupComponent
     RoomTypes RoomType;
     SpriteRenderer SprRenderer;
 
-    void Start()
+    void Awake()
     {
         SprRenderer = GetComponent<SpriteRenderer>();
     }
