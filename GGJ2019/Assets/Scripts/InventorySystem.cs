@@ -39,7 +39,8 @@ public class InventorySystem : MonoBehaviour
         Items = new List<PickupComponent>();
         foreach (GameObject item in AutoActivatedPickupComponents)
         {
-            PickupComponent auto_pickup_component = item.GetComponent<PickupComponent>();
+            GameObject instantiated_item = Instantiate(item);
+            PickupComponent auto_pickup_component = instantiated_item.GetComponent<PickupComponent>();
             CheckCanAddItem(auto_pickup_component);
         }
 	}
