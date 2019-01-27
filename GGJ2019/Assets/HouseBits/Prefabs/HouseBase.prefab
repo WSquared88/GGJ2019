@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1598864743759684
 GameObject:
   m_ObjectHideFlags: 1
@@ -1885,14 +1885,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSpeed: 2
-  friction: 0.85
-  maxMag: 5
-  accelerationFactor: 1.2
-  decelerationFactor: 0.7
+  friction: 0.98
+  maxMag: 3
+  accelerationFactor: 1.06
+  decelerationFactor: 0.96
   maxAccel: 2
-  minAccel: 0.3
-  complexTimer: 0.25
-  simpleTimer: 0.5
+  minAccel: 0
+  complexTimer: 0.2
+  simpleTimer: 0.4
   PlayerCam: {fileID: 0}
 --- !u!137 &137082592895306716
 SkinnedMeshRenderer:
