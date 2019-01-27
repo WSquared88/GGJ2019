@@ -8,8 +8,10 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
     public GameObject[] FloorPrefabs;
+    [SerializeField]
+    Animator conductor;
     private GameObject TopFloor;
-
+    private float SyncTime;
 	// Use this for initialization
 	void Start ()
     {
@@ -46,10 +48,19 @@ public class House : MonoBehaviour
         hj.limits = jl;
         //It's crucial that everything but the base does not restrict rigidbody rotation
         new_floor.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        GetBaseAnimFrame();
+        new_floor.GetComponentInChildren<Animator>().Play("Take 001", -1, SyncTime);
         TopFloor = new_floor;
     }
 
-	
+	void GetBaseAnimFrame()
+    {
+        AnimatorStateInfo asi = conductor.GetCurrentAnimatorStateInfo(0);
+        SyncTime = asi.normalizedTime;
+        // conductor.animation["Take 001"].time
+
+        //SyncTime = conductor.
+    }
 	// Update is called once per frame
 	void Update ()
     {
