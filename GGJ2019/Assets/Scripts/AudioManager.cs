@@ -24,16 +24,6 @@ public class AudioManager : MonoBehaviour
     {
         Primary = SourceA;
         Secondary = SourceB;
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
-        {
-            print("built!");
-            if (scene.buildIndex == 0)
-            {
-                SourceA.clip = MainMenuTheme;
-                SourceB.clip = MainTheme;
-                SourceA.Play();
-            }
-        };
 	}
 
     public void CrossFade()
