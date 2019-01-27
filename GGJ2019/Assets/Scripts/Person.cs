@@ -86,6 +86,11 @@ public class Person : MonoBehaviour
         AIFunction = ConstrainedWander;
 	}
 
+    public void DisableRenderers()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     #region AI
     void ConstrainedWander()
     {

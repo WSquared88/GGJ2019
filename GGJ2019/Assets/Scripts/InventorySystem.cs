@@ -41,7 +41,6 @@ public class InventorySystem : MonoBehaviour
         {
             CheckCanAddItem(item);
         }
-        // TODO add a floor manually
 	}
 	
 	// Update is called once per frame
@@ -103,7 +102,8 @@ public class InventorySystem : MonoBehaviour
             if (person)
             {
                 person.StartTimer();
-                person.PersonSpriteRenderer.enabled = false;
+                person.DisableRenderers();
+
             }
             AddItem(item);
         }
