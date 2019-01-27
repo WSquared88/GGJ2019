@@ -14,6 +14,22 @@ public class InventorySystem : MonoBehaviour
     bool DebugDrawCollision;
     public event Action<PickupComponent> ItemPickedUp;
 
+    public List<Person> People
+    {
+        get
+        {
+            List<Person> people = new List<Person>();
+            foreach (PickupComponent item in Items)
+            {
+                Person person = item.GetComponent<Person>();
+                if (person != null)
+                {
+                    people.Add(person);
+                }
+            }
+            return people;
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
