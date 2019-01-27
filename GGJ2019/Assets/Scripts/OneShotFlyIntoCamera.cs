@@ -26,6 +26,9 @@ public class OneShotFlyIntoCamera : MonoBehaviour
         IsFlying = true;
     }
 
+    /// <summary>
+    /// Courtesy of https://stackoverflow.com/questions/13462001/ease-in-and-ease-out-animation-formula
+    /// </summary>
     private float EaseInOut(float t)
     {
         if (t <= 0.5f)
@@ -53,7 +56,7 @@ public class OneShotFlyIntoCamera : MonoBehaviour
             {
                 TargetCamera.enabled = true;
                 IsFlying = false;
-                this.enabled = false;
+                this.GetComponent<Camera>().enabled = false;
             }
         }
 	}
