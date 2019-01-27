@@ -15,7 +15,7 @@ public class Person : MonoBehaviour
 
     public SpriteRenderer PersonSpriteRenderer;
 
-    public event Action TimerDepleted;
+    public static event Action<GameObject> TimerDepleted;
     private bool TimerDepletedEventFired = false;
 
     [Tooltip("The maximum value of the timer that this person will use.")]
@@ -155,7 +155,7 @@ public class Person : MonoBehaviour
             {
                 if (TimerDepleted != null && !TimerDepletedEventFired)
                 {
-                    TimerDepleted();
+                    TimerDepleted(gameObject);
                     TimerDepletedEventFired = true;
                 }
             }
