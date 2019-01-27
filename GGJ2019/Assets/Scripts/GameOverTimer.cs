@@ -4,31 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(Text))]
 public class GameOverTimer : MonoBehaviour
 {
     [SerializeField]
-    float TimeUntilGameOverInSeconds = 60.0f;
+    float MaxTimeUntilGameOverInSeconds = 60.0f;
+    float CurrentTimeUntilGameOverInSeconds;
+    [SerializeField]
+    Image TimerImageComponent;
+    [SerializeField]
     Text TimerTextComponent;
     [SerializeField]
-    string TimerCountdownString;
+    string TimerStringFormat;
 
 	// Use this for initialization
 	void Start ()
     {
-        Debug.Assert(TimeUntilGameOverInSeconds > 0.0f + float.Epsilon, "The gameover timer was set to less than zero when it was initialized!");
-        TimerTextComponent = GetComponent<Text>();
-        Debug.Assert(TimerTextComponent != null, "The timer was unable to find the text component on it!");
-        //Debug.Assert(TimerCountdownString.Length > 0 && TimerCountdownString.Contains("{0}"), "The timer countdown string doesn't have a {0} in the string. We won't be able to display the time left!");
+        CurrentTimeUntilGameOverInSeconds = MaxTimeUntilGameOverInSeconds;
+        Debug.Assert(MaxTimeUntilGameOverInSeconds > 0.0f + float.Epsilon, "The gameover timer was set to less than zero when it was initialized!");
+        Debug.Assert(TimerImageComponent, "The GameOverTimer doesn't have the TimerImageComponent set! We need this so we can make it animate!");
+
+        if (!TimerTextComponent)
+        {
+            TimerTextComponent = GetComponentInChildren<Text>();
+        }
+
+        Debug.Assert(TimerTextComponent, "There isn't a TimerTextComponent attached to one of the children of the GameOverTimer!");
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        TimeUntilGameOverInSeconds -= Time.deltaTime;
-        TimerTextComponent.text = string.Format(TimerCountdownString, TimeUntilGameOverInSeconds);
+        CurrentTimeUntilGameOverInSeconds -= Time.deltaTime;
+        TimerImageComponent.fillAmount = CurrentTimeUntilGameOverInSeconds / MaxTimeUntilGameOverInSeconds;
+        TimerTextComponent.text = string.Format(TimerStringFormat, CurrentTimeUntilGameOverInSeconds);
 
-        if(TimeUntilGameOverInSeconds <= 0.0f)
+        if(CurrentTimeUntilGameOverInSeconds <= 0.0f)
         {
             SceneManager.LoadScene("GameOverScene");
         }

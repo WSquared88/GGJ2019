@@ -74,6 +74,8 @@ public class Person : MonoBehaviour
     [Tooltip("If house's distance to this person is less than this, the person may seek or flee the house")]
     public float MinHouseDistance = 20;
 
+    private bool TimerRunning = false;
+
     private Action AIFunction;
     void Start ()
     {
@@ -128,23 +130,35 @@ public class Person : MonoBehaviour
     {
         BuyerTime -= Time.deltaTime * (1 + PercentModifier * CurrentDislikes);
     }
+
+    public void StartTimer()
+    {
+        TimerRunning = true;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        AIFunction();
-        if (BuyerTime > 0)
+        if (TimerRunning)
         {
-            ProgressTimer();
-        }
+            if (BuyerTime > 0)
+            {
+                ProgressTimer();
+            }
+            else
+            {
+                if (TimerDepleted != null && !TimerDepletedEventFired)
+                {
+                    TimerDepleted();
+                    TimerDepletedEventFired = true;
+                }
+            }
+        } 
         else
         {
-            if (TimerDepleted != null && !TimerDepletedEventFired)
-            {
-                TimerDepleted();
-                TimerDepletedEventFired = true;
-            }
+            AIFunction();
         }
+
 
     }
 

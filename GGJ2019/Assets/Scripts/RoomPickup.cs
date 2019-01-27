@@ -20,9 +20,16 @@ public class RoomPickup : PickupComponent
 {
     [SerializeField]
     RoomTypes RoomType;
+    [SerializeField]
+    Sprite RoomSprite;
 
     public RoomTypes GetRoomType()
     {
         return RoomType;
+    }
+
+    public Sprite GetRoomSprite()
+    {
+        return RoomSprite;
     }
 }

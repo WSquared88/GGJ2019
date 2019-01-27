@@ -9,9 +9,27 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     float PickupRadius;
     [SerializeField]
+    int MaxNumRoomsPerFloor = 3;
+    [SerializeField]
     bool DebugDrawCollision;
     public event Action<PickupComponent> ItemPickedUp;
 
+    public List<Person> People
+    {
+        get
+        {
+            List<Person> people = new List<Person>();
+            foreach (PickupComponent item in Items)
+            {
+                Person person = item.GetComponent<Person>();
+                if (person != null)
+                {
+                    people.Add(person);
+                }
+            }
+            return people;
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -31,7 +49,7 @@ public class InventorySystem : MonoBehaviour
                 PickupComponent hit_pickup = hit_collider[i].gameObject.GetComponent<PickupComponent>();
                 if (hit_pickup != null)
                 {
-                    AddItem(hit_pickup);
+                    CheckCanAddItem(hit_pickup);
                 }
             }
         }
@@ -46,7 +64,44 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void AddItem(PickupComponent item)
+    void CheckCanAddItem(PickupComponent item)
+    {
+        RoomPickup room_pickup = item as RoomPickup;
+
+        //If we're a room piece
+        if(room_pickup)
+        {
+            //If we're a floor we always want to be picked up
+            if (room_pickup.GetRoomType() == RoomTypes.Floor)
+            {
+                AddItem(room_pickup);
+            }
+            //We must be a room
+            else
+            {
+                int num_floors = GetRoomCount(RoomTypes.Floor);
+                int num_non_floor_rooms = GetCountAllRooms() - num_floors;
+
+                //We only want to be added if we have enough floors for the items
+                if (num_non_floor_rooms < num_floors * MaxNumRoomsPerFloor)
+                {
+                    AddItem(room_pickup);
+                }
+            }
+        }
+        //If we're just a person
+        else
+        {
+            Person person = item.GetComponent<Person>();
+            if (person)
+            {
+                person.StartTimer();
+            }
+            AddItem(item);
+        }
+    }
+
+    void AddItem(PickupComponent item)
     {
         Debug.Log("We picked up the item! It was really cool!");
         item.GetComponent<Renderer>().enabled = false;
@@ -74,6 +129,16 @@ public class InventorySystem : MonoBehaviour
         }
 
         return count;
+    }
+
+    public int GetCountAllRooms()
+    {
+        return Items.Count;
+    }
+
+    public int GetMaxNumRoomsPerFloor()
+    {
+        return MaxNumRoomsPerFloor;
     }
 
     public void SubscribeToPickedUpEvent(Action<PickupComponent> subscribing_function)
