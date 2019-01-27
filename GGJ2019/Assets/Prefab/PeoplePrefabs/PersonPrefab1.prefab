@@ -249,8 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Likes: 000000000100000002000000
   Dislikes: 03000000
-  PersonSpriteRenderer: {fileID: 0}
-  MaxTimerValue: 10
+  PersonSpriteRenderer: {fileID: 212143534919280832}
+  MaxTimerValue: 20
   PercentModifier: 1
   WanderArea: {fileID: 0}
   HouseObject: {fileID: 0}

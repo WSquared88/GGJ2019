@@ -10933,6 +10933,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114414107111954396, guid: 6dce47796f854644da739de4c11d241c,
+        type: 2}
+      propertyPath: MaxTimeUntilGameOverInSeconds
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dce47796f854644da739de4c11d241c, type: 2}
   m_IsPrefabAsset: 0
@@ -28114,7 +28119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -23.00003, y: 0}
+  m_AnchoredPosition: {x: -23, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118950468
@@ -34818,12 +34823,12 @@ MonoBehaviour:
   SpawnablePeople:
   - {fileID: 1891504352194072, guid: 9b042c1dd6cb7bb4f8cf2d7a3022b311, type: 2}
   - {fileID: 1762866026362624, guid: 59d84df3fb989b643923417fa7988b4c, type: 2}
-  - {fileID: 1949144291167856, guid: 57a3da5ac6df0f344923b8d430bf4682, type: 2}
-  - {fileID: 1451582404288486, guid: 10dfb6eeeff6cfd44861c827a4aeb717, type: 2}
-  - {fileID: 1576431022653188, guid: fce756f0cbebb5b439909459af250a97, type: 2}
-  - {fileID: 1367812301853434, guid: 3235c01735e322640aabc8a2dc354e64, type: 2}
-  - {fileID: 1110552820945312, guid: c0cdff1484907c443adda196345c3ba9, type: 2}
-  - {fileID: 1257953946940156, guid: cbc167eb452e83b478497fc96ac267c9, type: 2}
+  - {fileID: 1762866026362624, guid: 83cd0bdba4ec7e0499270ceb116c277e, type: 2}
+  - {fileID: 1762866026362624, guid: 06f920c8832028f499aefb12be5af873, type: 2}
+  - {fileID: 1762866026362624, guid: 8e081b924bfaf7f49b052ae8e294b537, type: 2}
+  - {fileID: 1762866026362624, guid: 4e22186cc8c886a4dbe9d1a0cd3c748b, type: 2}
+  - {fileID: 1762866026362624, guid: e08418458151a974398a85fda7d4e4a3, type: 2}
+  - {fileID: 1762866026362624, guid: 03a631d4e4b66294ca93e9098f287564, type: 2}
   MaxNumSpawnedPeople: 6
   SpawnableRooms:
   - {fileID: 1996544031428734, guid: 5e89337a233afc24980f33f2b61b97b1, type: 2}
@@ -34832,8 +34837,7 @@ MonoBehaviour:
   - {fileID: 1261393591507388, guid: 9debd928d1963d247ba88e7de63fe79d, type: 2}
   - {fileID: 1939657871421484, guid: 7d2d97d8895d24b42b8cc9075adef9c2, type: 2}
   MaxNumSpawnedRooms: 5
-  PlayerInventory: {fileID: 114368788499662092, guid: 05ee59bc2f241204abfc6b038b6f8416,
-    type: 2}
+  PlayerInventory: {fileID: 656013525}
   GameBoundary: {fileID: 1647449852}
   PlayerTemplate: {fileID: 1769837575366620, guid: 05ee59bc2f241204abfc6b038b6f8416,
     type: 2}
@@ -38173,7 +38177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47248da732a81d46ab019d7625650b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSellValue: 0
+  InitialSellValue: 1000
   Inventory: {fileID: 656013525}
 --- !u!4 &1544962889
 Transform:
@@ -38442,8 +38446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -125.5, y: -44}
-  m_SizeDelta: {x: 109.4, y: 37.3}
+  m_AnchoredPosition: {x: 0, y: -44}
+  m_SizeDelta: {x: 234.9, y: 37.3}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1562686229
 MonoBehaviour:
@@ -38456,6 +38460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7f26fccd21e4a468c551b3da881e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FormatText: 'Score: {0}'
   UpdateEveryFrame: 1
 --- !u!114 &1562686230
 MonoBehaviour:
@@ -38469,7 +38474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -38479,11 +38484,11 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

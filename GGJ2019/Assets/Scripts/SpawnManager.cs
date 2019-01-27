@@ -130,6 +130,7 @@ public class SpawnManager : MonoBehaviour
         spawned_person_component.transform.position = spawner.transform.position;
         spawned_person_component.WanderArea = spawner.GetComponent<Collider>();
         spawned_person_component.HouseObject = PlayerInventory.GetComponent<House>();
+        spawned_person_component.transform.GetChild(0).GetComponent<CameraFacingBillboard>().CameraToLookAt = PlayerInventory.GetComponent<House>().PlayerCam;
 
         Spawners.Remove(spawner);
         UsedSpawners.Add(spawner);
@@ -146,6 +147,7 @@ public class SpawnManager : MonoBehaviour
         GameObject spawned_room_obj = Instantiate(SpawnableRooms[random_room_index]);
         RoomPickup spawned_room_component = spawned_room_obj.GetComponent<RoomPickup>();
         spawned_room_component.transform.position = spawner.transform.position;
+        spawned_room_component.transform.GetComponent<CameraFacingBillboard>().CameraToLookAt = PlayerInventory.GetComponent<House>().PlayerCam;
 
         Spawners.Remove(spawner);
         UsedSpawners.Add(spawner);

@@ -1884,12 +1884,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d50e62337e0ca4b8c1fa216bdaef43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSpeed: 2
-  friction: 0.98
-  maxMag: 3
-  accelerationFactor: 1.06
-  decelerationFactor: 0.96
-  maxAccel: 2
+  PlayerSpeed: 10
+  friction: 0.6
+  maxMag: 8
+  accelerationFactor: 1.6
+  decelerationFactor: 0.6
+  maxAccel: 4
   minAccel: 0
   complexTimer: 0.2
   simpleTimer: 0.4

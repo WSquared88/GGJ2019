@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         PerspGoalLR = camRight * Input.GetAxis("Vertical");
 
         Goal = Vector3.Normalize(PerspGoalFB + PerspGoalLR);
-        Debug.Log(Goal.magnitude);
+      //  Debug.Log(Goal.magnitude);
         if (Goal.magnitude != 0) 
         {
             Rotating = true;
@@ -144,7 +144,8 @@ public class PlayerMovement : MonoBehaviour
         move_direction = PlayerCam.transform.TransformDirection(move_direction);
         move_direction.y = 0;
         Rigidbody rigid_body = GetComponent<Rigidbody>();
-        Debug.Assert(rigid_body != null, "The Rigidbody is missing from the player!");
+        //  Debug.Assert(rigid_body != null, "The Rigidbody is missing from the player!");
+        Debug.Log(PlayerSpeed);
         SumMove = CurrMove + move_direction;
         //rigid_body.MovePosition(transform.position + move_direction * Time.deltaTime * PlayerSpeed);
         CurrMove = Vector3.ClampMagnitude(SumMove, maxMag);
