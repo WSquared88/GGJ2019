@@ -42,7 +42,6 @@ public class InventorySystem : MonoBehaviour
             PickupComponent auto_pickup_component = item.GetComponent<PickupComponent>();
             CheckCanAddItem(auto_pickup_component);
         }
-        // TODO add a floor manually
 	}
 	
 	// Update is called once per frame
@@ -104,7 +103,8 @@ public class InventorySystem : MonoBehaviour
             if (person)
             {
                 person.StartTimer();
-                person.PersonSpriteRenderer.enabled = false;
+                person.DisableRenderers();
+
             }
             AddItem(item);
         }

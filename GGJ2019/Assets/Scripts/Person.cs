@@ -88,6 +88,11 @@ public class Person : MonoBehaviour
         SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
 	}
 
+    public void DisableRenderers()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     #region AI
     void ConstrainedWander()
     {
