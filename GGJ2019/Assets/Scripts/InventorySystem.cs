@@ -35,6 +35,7 @@ public class InventorySystem : MonoBehaviour
 	void Start ()
     {
         Items = new List<PickupComponent>();
+        // TODO add a floor manually
 	}
 	
 	// Update is called once per frame
@@ -92,6 +93,11 @@ public class InventorySystem : MonoBehaviour
         //If we're just a person
         else
         {
+            Person person = item.GetComponent<Person>();
+            if (person)
+            {
+                person.StartTimer();
+            }
             AddItem(item);
         }
     }

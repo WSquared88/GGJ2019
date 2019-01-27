@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - house
+  - innerFloor
+  - FloorWrapper
   layers:
   - Default
   - TransparentFX
