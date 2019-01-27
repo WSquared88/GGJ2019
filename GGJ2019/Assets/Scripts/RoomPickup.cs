@@ -16,12 +16,17 @@ public enum RoomTypes
 /// <summary>
 /// Extension of the PickupComponent which represents any pickup-able component that is part of a room.
 /// </summary>
+[RequireComponent(typeof(SpriteRenderer))]
 public class RoomPickup : PickupComponent
 {
     [SerializeField]
     RoomTypes RoomType;
-    [SerializeField]
-    Sprite RoomSprite;
+    SpriteRenderer SprRenderer;
+
+    void Start()
+    {
+        SprRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public RoomTypes GetRoomType()
     {
@@ -30,6 +35,6 @@ public class RoomPickup : PickupComponent
 
     public Sprite GetRoomSprite()
     {
-        return RoomSprite;
+        return SprRenderer.sprite;
     }
 }
