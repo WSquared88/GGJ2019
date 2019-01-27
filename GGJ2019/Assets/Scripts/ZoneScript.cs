@@ -38,8 +38,8 @@ public class ZoneScript : MonoBehaviour
                     }
 
                     ScoreManager.Instance.SellHouse();
-                    Destroy(player);
                     SpawnManager.Instance.SpawnPlayer();
+                    Destroy(player);
                 }
             }
             

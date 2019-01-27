@@ -81,6 +81,7 @@ public class UIPersonTracker : MonoBehaviour
         PersonTimerManagers.Clear();
         CurrentPeopleComponents.Clear();
         PlayerInventory = new_player.GetComponent<InventorySystem>();
+        PlayerInventory.SubscribeToPickedUpEvent(SpawnNewPersonUI);
     }
 
     void PersonLeftHandler(GameObject person_obj)

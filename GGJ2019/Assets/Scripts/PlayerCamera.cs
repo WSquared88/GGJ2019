@@ -18,6 +18,7 @@ public class PlayerCamera : MonoBehaviour {
     {
         Debug.Assert(Target != null, "No Target has been set");
         TargetToCam = (transform.position - Target.position);
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
     }
 	
 	// Update is called once per frame
@@ -28,4 +29,9 @@ public class PlayerCamera : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, Target.transform.position + TargetToCam, Smooth * Time.fixedDeltaTime);
         }
 	}
+
+    void PlayerRespawnedHandler(GameObject new_player)
+    {
+        Target = new_player.transform;
+    }
 }
