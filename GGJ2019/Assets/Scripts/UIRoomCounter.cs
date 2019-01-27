@@ -19,6 +19,7 @@ public class UIRoomCounter : MonoBehaviour
     [SerializeField]
     float FloorWidth;
     List<Image> Floors;
+    List<Image> Rooms;
 
 	// Use this for initialization
 	void Start ()
@@ -27,6 +28,7 @@ public class UIRoomCounter : MonoBehaviour
         Debug.Assert(FloorHeight > 0.0f + float.Epsilon, "The floor height wasn't set! The floors will stack on top of each other!");
         Debug.Assert(FloorWidth > 0.0f + float.Epsilon, "The floor width wasn't set! The rooms will be stacked on top of each other!");
         PlayerInventory.SubscribeToPickedUpEvent(PickedUpEventHandler);
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
         Floors = new List<Image>();
     }
 
@@ -91,5 +93,23 @@ public class UIRoomCounter : MonoBehaviour
         room_rect_transform.anchorMax = new Vector2(0.0f, 0.0f);
         room_rect_transform.pivot = new Vector2(0.0f, 0.0f);
         room_rect_transform.anchoredPosition = new Vector2(num_all_non_floor_rooms % max_num_rooms_per_floor * room_rect_transform.sizeDelta.x, 0);
+        Rooms.Add(room_image);
+    }
+
+    void PlayerRespawnedHandler(GameObject new_player)
+    {
+        for(int i = 0;i<Floors.Count;i++)
+        {
+            Destroy(Floors[i].gameObject);
+        }
+
+        for(int i = 0;i<Rooms.Count;i++)
+        {
+            Destroy(Rooms[i].gameObject);
+        }
+
+        Floors.Clear();
+        Rooms.Clear();
+        PlayerInventory = new_player.GetComponent<InventorySystem>();
     }
 }
