@@ -35,6 +35,7 @@ public class InventorySystem : MonoBehaviour
 	void Start ()
     {
         Items = new List<PickupComponent>();
+        // TODO add a floor manually
 	}
 	
 	// Update is called once per frame
