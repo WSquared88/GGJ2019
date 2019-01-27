@@ -14,6 +14,8 @@ public class InventorySystem : MonoBehaviour
     GameObject[] AutoActivatedPickupComponents;
     [SerializeField]
     bool DebugDrawCollision;
+    [SerializeField]
+    Transform Target;
     public event Action<PickupComponent> ItemPickedUp;
 
     public List<Person> People
@@ -33,6 +35,11 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    public void SetTarget(Transform target)
+    {
+        Target = target;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -41,7 +48,8 @@ public class InventorySystem : MonoBehaviour
 
         foreach (GameObject item in AutoActivatedPickupComponents)
         {
-            PickupComponent auto_pickup_component = item.GetComponent<PickupComponent>();
+            GameObject instantiated_item = Instantiate(item);
+            PickupComponent auto_pickup_component = instantiated_item.GetComponent<PickupComponent>();
             CheckCanAddItem(auto_pickup_component);
         }
 	}
@@ -49,9 +57,13 @@ public class InventorySystem : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (Target == null)
+        {
+            return;
+        }
 		if(Input.GetButtonDown("Interact"))
         {
-            Collider[] hit_collider = Physics.OverlapSphere(gameObject.transform.position, PickupRadius);
+            Collider[] hit_collider = Physics.OverlapSphere(Target.transform.position, PickupRadius);
 
             for (int i = 0; i < hit_collider.Length; i++)
             {

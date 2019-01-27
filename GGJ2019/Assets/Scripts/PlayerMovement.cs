@@ -44,7 +44,10 @@ public class PlayerMovement : MonoBehaviour
   //  private float ComplexTimer;
   //  private float SimpleTimer;
     
-
+    public void SetPlayerCamera(Camera cam)
+    {
+        PlayerCam = cam;
+    }
 
     // Use this for initialization
     void Start ()
