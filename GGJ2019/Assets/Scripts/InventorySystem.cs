@@ -11,7 +11,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     int MaxNumRoomsPerFloor = 3;
     [SerializeField]
-    PickupComponent[] AutoActivatedPickupComponents;
+    GameObject[] AutoActivatedPickupComponents;
     [SerializeField]
     bool DebugDrawCollision;
     public event Action<PickupComponent> ItemPickedUp;
@@ -37,9 +37,10 @@ public class InventorySystem : MonoBehaviour
 	void Start ()
     {
         Items = new List<PickupComponent>();
-        foreach (var item in AutoActivatedPickupComponents)
+        foreach (GameObject item in AutoActivatedPickupComponents)
         {
-            CheckCanAddItem(item);
+            PickupComponent auto_pickup_component = item.GetComponent<PickupComponent>();
+            CheckCanAddItem(auto_pickup_component);
         }
         // TODO add a floor manually
 	}

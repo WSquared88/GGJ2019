@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance = null;
     [SerializeField]
     List<GameObject> Spawners;
     [SerializeField]
@@ -24,9 +25,23 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     LifeBox GameBoundary;
     [SerializeField]
-    House PlayerTemplate;
+    GameObject PlayerTemplate;
 
     public static event Action<GameObject> PlayerRespawned;
+
+    void Awake()
+    {
+        if(!Instance)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Assert(true, "There is more than one instance of the SpawnManager! This shouldn't happen!");
+            Destroy(gameObject);
+        }
+    }
 
     // Use this for initialization
     void Start ()
@@ -138,15 +153,15 @@ public class SpawnManager : MonoBehaviour
         CheckIfSpawnersRemain();
     }
 
-    void SpawnPlayer()
+    public void SpawnPlayer()
     {
         int random_spawner_index = UnityEngine.Random.Range(0, PlayerSpawners.Count);
 
         GameObject spawner = PlayerSpawners[random_spawner_index];
-        House spawned_player = Instantiate(PlayerTemplate);
+        GameObject spawned_player = Instantiate(PlayerTemplate);
         spawned_player.transform.position = spawner.transform.position;
 
-        PlayerRespawned(spawned_player.gameObject);
+        PlayerRespawned(spawned_player);
     }
 
     void CheckIfSpawnersRemain()
