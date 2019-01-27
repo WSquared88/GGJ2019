@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114438562320280094}
   - component: {fileID: 114087530688093454}
   - component: {fileID: 114621942076364158}
+  - component: {fileID: 114612270719384064}
   m_Layer: 0
   m_Name: PersonPrefab4
   m_TagString: Untagged
@@ -126,6 +127,18 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1253085098435666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbfc5195b2a06ea409f16a70a49aa47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraToLookAt: {fileID: 0}
+--- !u!114 &114612270719384064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451582404288486}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbfc5195b2a06ea409f16a70a49aa47f, type: 3}
