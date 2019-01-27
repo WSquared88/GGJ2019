@@ -44,6 +44,8 @@ public class InventorySystem : MonoBehaviour
 	void Start ()
     {
         Items = new List<PickupComponent>();
+        Person.TimerDepleted += PersonLeftHandler;
+
         foreach (GameObject item in AutoActivatedPickupComponents)
         {
             GameObject instantiated_item = Instantiate(item);
@@ -170,5 +172,17 @@ public class InventorySystem : MonoBehaviour
     public void SubscribeToPickedUpEvent(Action<PickupComponent> subscribing_function)
     {
         ItemPickedUp += subscribing_function;
+    }
+
+    void PersonLeftHandler(GameObject person_obj)
+    {
+        for(int i = 0;i<Items.Count;i++)
+        {
+            if(Items[i].gameObject == person_obj)
+            {
+                Items.RemoveAt(i);
+                break;
+            }
+        }
     }
 }

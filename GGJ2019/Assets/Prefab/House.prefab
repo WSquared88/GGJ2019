@@ -1889,7 +1889,7 @@ MonoBehaviour:
   PickupRadius: 2
   MaxNumRoomsPerFloor: 3
   AutoActivatedPickupComponents:
-  - {fileID: 0}
+  - {fileID: 1946141668196252, guid: 2facf1fde5b890041989a499592066b0, type: 2}
   DebugDrawCollision: 0
 --- !u!114 &114335855703501090
 MonoBehaviour:
