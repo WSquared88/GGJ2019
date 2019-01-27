@@ -14,7 +14,7 @@ public class Person : MonoBehaviour
     public RoomTypes[] Dislikes;
 
     [SerializeField]
-    Sprite PersonUIImage;
+    SpriteRenderer PersonSpriteRenderer;
 
     public event Action TimerDepleted;
     private bool TimerDepletedEventFired = false;
@@ -164,7 +164,7 @@ public class Person : MonoBehaviour
 
     public Sprite GetPersonUIImage()
     {
-        return PersonUIImage;
+        return PersonSpriteRenderer.sprite;
     }
 
     public float GetMaxTimerValue()
