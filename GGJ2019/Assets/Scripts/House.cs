@@ -46,10 +46,10 @@ public class House : MonoBehaviour
             hj.useSpring = true;
             JointSpring js = hj.spring;
             js.damper = 0.05f;
-            js.spring = 3;
+            js.spring = 2;
             hj.massScale = 1;
             hj.spring = js;
-            hj.connectedMassScale = 100;
+            hj.connectedMassScale = 750;
             hj.connectedBody = new_floor.GetComponent<Rigidbody>();
             JointLimits jl = hj.limits;
             jl.min = 0;
