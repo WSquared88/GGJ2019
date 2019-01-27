@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69a24380054b1648bcac01e0bf10d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 656013530}
+  Target: {fileID: 0}
   Smooth: 2
   FollowTarget: 1
 --- !u!1 &14492852
@@ -17536,8 +17536,7 @@ GameObject:
 --- !u!114 &656013525
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114144135423204564, guid: de96d0a7ec762ca4ea886daa9d2a0683,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 656013524}
   m_Enabled: 1
@@ -17550,6 +17549,7 @@ MonoBehaviour:
   AutoActivatedPickupComponents:
   - {fileID: 1967514969598980, guid: c36e2bde5a161c34ba23b9a98bb1bd9f, type: 2}
   DebugDrawCollision: 0
+  Target: {fileID: 0}
 --- !u!114 &656013527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17912,7 +17912,7 @@ Prefab:
         type: 2}
       propertyPath: PlayerInventory
       value: 
-      objectReference: {fileID: 656013525}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87ebc2d706ef774897f3df45f07dc11, type: 2}
   m_IsPrefabAsset: 0
@@ -48825,7 +48825,7 @@ Prefab:
         type: 2}
       propertyPath: PlayerInventory
       value: 
-      objectReference: {fileID: 656013525}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5927c598a0716274e9ecef5b9df61272, type: 2}
   m_IsPrefabAsset: 0

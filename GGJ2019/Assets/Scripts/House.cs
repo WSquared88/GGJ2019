@@ -65,6 +65,8 @@ public class House : MonoBehaviour
             new_floor = Instantiate<GameObject>(BasePrefab);
             new_floor.transform.parent = transform;
             new_floor.transform.GetComponent<PlayerMovement>().SetPlayerCamera(PlayerCam);
+            PlayerCam.GetComponent<PlayerCamera>().SetTarget(new_floor.transform);
+            GetComponent<InventorySystem>().SetTarget(new_floor.transform);
             conductor = new_floor.transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         }
 

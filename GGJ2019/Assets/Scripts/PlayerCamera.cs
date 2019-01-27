@@ -16,12 +16,21 @@ public class PlayerCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Debug.Assert(Target != null, "No Target has been set");
+        if (Target != null)
+        {
+            TargetToCam = (transform.position - Target.position);
+
+        }
+    }
+
+    public void SetTarget(Transform target)
+    {
+        Target = target;
         TargetToCam = (transform.position - Target.position);
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
 		if (FollowTarget)
         {
