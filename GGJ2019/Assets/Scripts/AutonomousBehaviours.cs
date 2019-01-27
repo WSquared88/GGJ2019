@@ -59,18 +59,10 @@ public class AutonomousBehaviours : MonoBehaviour
 
     public Vector3 Constrain(Bounds bounds)
     {
-        Vector3 min = bounds.center - bounds.extents;
-        Vector3 max = bounds.center + bounds.extents;
-        Vector3 desired_velocity = Vector3.zero;
-        if (transform.position.x < min.x || transform.position.x > max.x)
-            desired_velocity.x = -Rb.velocity.x;
-        if (transform.position.y < min.y || transform.position.y > max.y)
-            desired_velocity.y = -Rb.velocity.y;
-        if (transform.position.z < min.z || transform.position.z > max.z)
-            desired_velocity.z = -Rb.velocity.z;
-        Vector3 steer = desired_velocity - Rb.velocity;
-        StripY(ref steer);
-        return steer;
+        if (!bounds.Contains(transform.position))
+            return Seek(bounds.center);
+        else
+            return Vector3.zero;
     }
 
 }
