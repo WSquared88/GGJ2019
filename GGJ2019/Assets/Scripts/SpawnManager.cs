@@ -14,11 +14,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     GameObject[] SpawnablePeople;
     [SerializeField]
-    int MaxNumSpawnedRooms;
+    int MaxNumSpawnedPeople;
     [SerializeField]
     GameObject[] SpawnableRooms;
     [SerializeField]
-    int MaxNumSpawnedPeople;
+    int MaxNumSpawnedRooms;
     [SerializeField]
     InventorySystem PlayerInventory;
     [SerializeField]
