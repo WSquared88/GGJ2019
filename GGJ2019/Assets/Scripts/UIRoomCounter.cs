@@ -30,6 +30,7 @@ public class UIRoomCounter : MonoBehaviour
         PlayerInventory.SubscribeToPickedUpEvent(PickedUpEventHandler);
         SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
         Floors = new List<Image>();
+        Rooms = new List<Image>();
     }
 
     void PickedUpEventHandler(PickupComponent pickup_component)
