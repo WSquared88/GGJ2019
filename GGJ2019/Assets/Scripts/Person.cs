@@ -84,6 +84,8 @@ public class Person : MonoBehaviour
         Debug.Assert(HouseObject, "House must be attached");
         HouseInventory = HouseObject.GetComponent<InventorySystem>();
         AIFunction = ConstrainedWander;
+
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
 	}
 
     public void DisableRenderers()
@@ -164,6 +166,12 @@ public class Person : MonoBehaviour
         }
 
 
+    }
+
+    void PlayerRespawnedHandler(GameObject new_player)
+    {
+        HouseInventory = new_player.GetComponent<InventorySystem>();
+        HouseObject = new_player.GetComponent<House>();
     }
 
     public Sprite GetPersonUIImage()

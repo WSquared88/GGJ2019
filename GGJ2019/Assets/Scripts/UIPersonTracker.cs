@@ -20,6 +20,7 @@ public class UIPersonTracker : MonoBehaviour
         Debug.Assert(PlayerInventory != null, "The player inventory wasn't set on the UIPersonTracker component of the UI!");
         Debug.Assert(PersonTimerTemplate, "The slider for the person timer wasn't set on the UIPersonTracker component of the UI!");
         PlayerInventory.SubscribeToPickedUpEvent(SpawnNewPersonUI);
+        SpawnManager.PlayerRespawned += PlayerRespawnedHandler;
 	}
 	
 	// Update is called once per frame
@@ -44,5 +45,17 @@ public class UIPersonTracker : MonoBehaviour
             CurrentPeopleComponents.Add(person_component);
             PersonTimerManagers.Add(time_manager);
         }
+    }
+
+    void PlayerRespawnedHandler(GameObject new_player)
+    {
+        for (int i = 0; i < PersonTimerManagers.Count; i++)
+        {
+            Destroy(PersonTimerManagers[i].gameObject);
+        }
+
+        PersonTimerManagers.Clear();
+        CurrentPeopleComponents.Clear();
+        PlayerInventory = new_player.GetComponent<InventorySystem>();
     }
 }

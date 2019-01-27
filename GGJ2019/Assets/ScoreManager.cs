@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Inventory = GetComponent<InventorySystem>();
+        SpawnManager.PlayerRespawned += PlayerRespawnHandler;
 	}
 	
 	// Update is called once per frame
@@ -37,5 +38,10 @@ public class ScoreManager : MonoBehaviour {
     void SellHouse()
     {
         currScore = currScore + CurrSellValue;
+    }
+
+    void PlayerRespawnHandler(GameObject new_player)
+    {
+        Inventory = new_player.GetComponent<InventorySystem>();
     }
 }
