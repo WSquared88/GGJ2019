@@ -143,10 +143,10 @@ public class SpawnManager : MonoBehaviour
         int random_spawner_index = UnityEngine.Random.Range(0, PlayerSpawners.Count);
 
         GameObject spawner = PlayerSpawners[random_spawner_index];
-        House spawned_room = Instantiate(PlayerTemplate);
-        spawned_room.transform.position = spawner.transform.position;
+        House spawned_player = Instantiate(PlayerTemplate);
+        spawned_player.transform.position = spawner.transform.position;
 
-        PlayerRespawned(spawned_room.gameObject);
+        PlayerRespawned(spawned_player.gameObject);
     }
 
     void CheckIfSpawnersRemain()
