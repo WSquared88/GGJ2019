@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     [SerializeField]
     float InitialSellValue;
-    float CurrSellValue;
     [SerializeField]
     InventorySystem Inventory;
 
@@ -31,6 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         Debug.Assert(Inventory, "The Inventory on the " + gameObject.name + " is missing!");
         SpawnManager.PlayerRespawned += PlayerRespawnHandler;
+        currScore = 0;
 	}
 	
 	// Update is called once per frame
@@ -49,12 +49,12 @@ public class ScoreManager : MonoBehaviour
         //-do this on a per person basis 
         if (Inventory)
         {
-            CurrSellValue = InitialSellValue;
+            currScore += InitialSellValue;
 
             foreach (Person person in Inventory.People)
             {
                 float person_addition = person.BuyerTime * person.PercentModifier * InitialSellValue;
-                CurrSellValue += person_addition;
+                currScore += person_addition;
             }
         }
     }
